@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategorieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class Categorie
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Style::class, mappedBy="name")
+     */
+    private $styles;
+
+    public function __construct()
+    {
+        $this->styles = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,36 @@ class Categorie
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Style[]
+     */
+    public function getStyles(): Collection
+    {
+        return $this->styles;
+    }
+
+    public function addStyle(Style $style): self
+    {
+        if (!$this->styles->contains($style)) {
+            $this->styles[] = $style;
+            $style->setName($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStyle(Style $style): self
+    {
+        if ($this->styles->removeElement($style)) {
+            // set the owning side to null (unless already changed)
+            if ($style->getName() === $this) {
+                $style->setName(null);
+            }
+        }
 
         return $this;
     }
