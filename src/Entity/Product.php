@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,9 +35,14 @@ class Product
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Style::class, inversedBy="products")
+     * @ORM\OneToMany(targetEntity=DetailProduct::class, mappedBy="product")
      */
-    private $style;
+    private $detailProducts;
+
+    public function __construct()
+    {
+        $this->detailProducts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -78,15 +85,34 @@ class Product
         return $this;
     }
 
-    public function getStyle(): ?Style
+    /**
+     * @return Collection|DetailProduct[]
+     */
+    public function getDetailProducts(): Collection
     {
-        return $this->style;
+        return $this->detailProducts;
     }
 
-    public function setStyle(?Style $style): self
+    public function addDetailProduct(DetailProduct $detailProduct): self
     {
-        $this->style = $style;
+        if (!$this->detailProducts->contains($detailProduct)) {
+            $this->detailProducts[] = $detailProduct;
+            $detailProduct->setProduct($this);
+        }
 
         return $this;
     }
+
+    public function removeDetailProduct(DetailProduct $detailProduct): self
+    {
+        if ($this->detailProducts->removeElement($detailProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($detailProduct->getProduct() === $this) {
+                $detailProduct->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
