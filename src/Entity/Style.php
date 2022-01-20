@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
 /**
  * @ORM\Entity(repositoryClass=StyleRepository::class)
  * @Vich\Uploadable
@@ -35,14 +34,14 @@ class Style
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="style")
-     */
-    private $products;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="styles")
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DetailProduct::class, mappedBy="style")
+     */
+    private $detailProducts;
 
     /**
       * @Vich\UploadableField(mapping="style_file", fileNameProperty="image")
@@ -58,6 +57,7 @@ class Style
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->detailProducts = new ArrayCollection();
         $this->updatedAt = new DateTimeImmutable();
     
     
@@ -92,36 +92,6 @@ class Style
         return $this;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-
-    public function addProduct(Product $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-            $product->setStyle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->products->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getStyle() === $this) {
-                $product->setStyle(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getCategorie(): ?Categorie
     {
         return $this->categorie;
@@ -134,11 +104,37 @@ class Style
         return $this;
     }
 
+    /**
+     * @return Collection|DetailProduct[]
+     */
+    public function getDetailProducts(): Collection
+    {
+        return $this->detailProducts;
+    }
 
+    public function addDetailProduct(DetailProduct $detailProduct): self
+    {
+        if (!$this->detailProducts->contains($detailProduct)) {
+            $this->detailProducts[] = $detailProduct;
+            $detailProduct->setStyle($this);
+        }
 
+        return $this;
+    }
 
+    public function removeDetailProduct(DetailProduct $detailProduct): self
+    {
+        if ($this->detailProducts->removeElement($detailProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($detailProduct->getStyle() === $this) {
+                $detailProduct->setStyle(null);
+            }
+        }
 
-      /**
+        return $this;
+    }
+
+     /**
        * Get the value of styleFile
        *
        * @return  File
@@ -173,4 +169,5 @@ class Style
 
           return $this;
       }
+
 }
