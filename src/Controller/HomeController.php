@@ -19,11 +19,21 @@ class HomeController extends AbstractController
     public function index(CategorieRepository $categorieRepository, StyleRepository $styleRepository): Response
     {
         $styles = $styleRepository->findAll();
-        
-        return $this->render('home/index.html.twig',
-        ['categorie' => $categorieRepository,
-        'styles' => $styles,
-    
-    ]);
+
+        return $this->render(
+            'home/index.html.twig',
+            [
+                'categorie' => $categorieRepository,
+                'styles' => $styles,
+            ]
+        );
+    }
+
+    /**
+     * @Route("/show/{id<^[0-9]+$>}", name="show")
+     */
+    public function show(Style $style): Response
+    {
+        return $this->render('home/show.html.twig', ['style' => $style]);
     }
 }

@@ -44,23 +44,21 @@ class Style
     private $detailProducts;
 
     /**
-      * @Vich\UploadableField(mapping="style_file", fileNameProperty="image")
-      * @var File
-      */
-      private $styleFile;
+     * @Vich\UploadableField(mapping="style_file", fileNameProperty="image")
+     * @var File
+     */
+    private $styleFile;
 
-      /**
-       * @ORM\Column(type="datetime")
-       */
-      private $updatedAt;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
         $this->detailProducts = new ArrayCollection();
         $this->updatedAt = new DateTimeImmutable();
-    
-    
     }
 
     public function getId(): ?int
@@ -134,40 +132,39 @@ class Style
         return $this;
     }
 
-     /**
-       * Get the value of styleFile
-       *
-       * @return  File
-       */ 
-      public function getStyleFile()
-      {
-            return $this->styleFile;
-      }
+    /**
+     * Get the value of styleFile
+     *
+     * @return  File
+     */
+    public function getStyleFile()
+    {
+        return $this->styleFile;
+    }
 
-      /**
-       * Set the value of styleFile
-       *
-       * @param  File  $styleFile
-       *
-       * @return  self
-       */ 
-      public function setStyleFile(File $styleFile)
-      {
-            $this->styleFile = $styleFile;
+    /**
+     * Set the value of styleFile
+     *
+     * @param  File  $styleFile
+     *
+     * @return  self
+     */
+    public function setStyleFile(File $styleFile)
+    {
+        $this->styleFile = $styleFile;
 
-            return $this;
-      }
+        return $this;
+    }
 
-      public function getUpdatedAt(): ?\DateTimeInterface
-      {
-          return $this->updatedAt;
-      }
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
 
-      public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-      {
-          $this->updatedAt = $updatedAt;
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
-          return $this;
-      }
-
+        return $this;
+    }
 }
