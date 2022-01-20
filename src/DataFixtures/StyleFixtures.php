@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 class StyleFixtures extends Fixture
 {
     
-       CONST STYLES = [
+       const STYLES = [
         [
             'name' => 'Moderne',
             'image' => 'salledebain1.jpg',
@@ -47,10 +47,12 @@ class StyleFixtures extends Fixture
                 $style = new Style();
                 $style->setName($styleName['name']);
                 $style->setImage($styleName['image']);
+                copy(__DIR__ .'/'.$styleName['image'],
+                    __DIR__ . '/../../public/uploads/styles/' . $styleName['image']);
                 $style->SetCategorie($this->getReference('categorie_0'));
                 $manager->persist($style);
     
-            }
+            }   
     
             $manager->flush();
         }

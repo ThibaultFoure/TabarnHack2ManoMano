@@ -2,9 +2,9 @@
 {% block body %}
 	<div class="container bg-light mt-5">
 		<div class="row bg-light">
-		{% for style in categorie.style %}
-{{ style.name }}
-{{ style.image }}
+		{% for style in styles %}
+<img src="{{ vich_uploader_asset(style) }}" alt="{{ style.image}}">
+
 			{% endfor %}
 		</div>
 	</div>

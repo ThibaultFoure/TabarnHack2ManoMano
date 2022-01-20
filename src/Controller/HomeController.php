@@ -18,10 +18,11 @@ class HomeController extends AbstractController
      */
     public function index(CategorieRepository $categorieRepository, StyleRepository $styleRepository): Response
     {
+        $styles = $styleRepository->findAll();
         
         return $this->render('home/index.html.twig',
         ['categorie' => $categorieRepository,
-        'style' => $styleRepository,
+        'styles' => $styles,
     
     ]);
     }
