@@ -25,7 +25,7 @@ class Categorie
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Style::class, mappedBy="name")
+     * @ORM\OneToMany(targetEntity=Style::class, mappedBy="categorie")
      */
     private $styles;
 
@@ -33,6 +33,10 @@ class Categorie
     {
         $this->styles = new ArrayCollection();
     }
+
+
+
+
 
     public function getId(): ?int
     {
@@ -63,7 +67,7 @@ class Categorie
     {
         if (!$this->styles->contains($style)) {
             $this->styles[] = $style;
-            $style->setName($this);
+            $style->setCategorie($this);
         }
 
         return $this;
@@ -73,11 +77,16 @@ class Categorie
     {
         if ($this->styles->removeElement($style)) {
             // set the owning side to null (unless already changed)
-            if ($style->getName() === $this) {
-                $style->setName(null);
+            if ($style->getCategorie() === $this) {
+                $style->setCategorie(null);
             }
         }
 
         return $this;
     }
+
+
+
+
+ 
 }

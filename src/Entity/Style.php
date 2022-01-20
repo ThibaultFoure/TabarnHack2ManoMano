@@ -20,7 +20,7 @@ class Style
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="styles")
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
@@ -34,9 +34,20 @@ class Style
      */
     private $products;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="styles")
+     */
+    private $categorie;
+
+   
+
+    
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+    
+    
     }
 
     public function getId(): ?int
@@ -44,12 +55,12 @@ class Style
         return $this->id;
     }
 
-    public function getName(): ?Categorie
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(?Categorie $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -97,4 +108,20 @@ class Style
 
         return $this;
     }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+
+
+
 }
