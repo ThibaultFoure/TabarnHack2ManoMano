@@ -1,0 +1,10 @@
+.card-sdb {
+    transition: transform 0.1s;
+
+    &:hover {
+        filter: brightness(90%);
+        box-shadow: 0px 0px 30px -15px $dark;
+        overflow: hidden;
+        transform: scale(1.03);
+    }
+}
