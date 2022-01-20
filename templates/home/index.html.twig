@@ -1,3 +1,48 @@
 {% extends "base.html.twig" %}
 {% block body %}
-<h1>sdghqg</h1>{% endblock %}
+<div class ="container bg-light mt-5">
+<div class="row bg-light">
+  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 ">
+    <img
+      src={{ asset('build/images/salledebain2.jpg') }}
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="style bohéme"
+    />  
+
+    <img
+      src={{ asset('build/images/salledebain3.jpg') }}
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="style moderne"
+    />
+  </div>
+
+  <div class="col-lg-4 mb-4 mb-lg-0">
+    <img
+      src={{ asset('build/images/salledebain4.jpg') }}
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="style rustique"
+    />
+
+    <img
+      src={{ asset('build/images/salledebain5.jpg') }}
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="style bois"
+    />
+  </div>
+
+  <div class="col-lg-4 mb-4 mb-lg-0">
+    <img
+      src={{ asset('build/images/salledebain6.jpg') }}
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="style vintage"
+    />
+
+    <img
+      src={{ asset('build/images/salledebain7.jpg') }}
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="style classic"
+    />
+  </div>
+</div>
+</div>
+{% endblock %}
