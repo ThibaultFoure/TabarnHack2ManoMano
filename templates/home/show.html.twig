@@ -1,5 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    
+<main class="container mb-4 mt-5">
+    <h1 class="text-center text-dark">salle de bain</h1>
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-xxl-8">
+            <div class="card mb-1 mt-5">
+                <img class="card-img" src="{{ vich_uploader_asset(style) }}" alt="{{ style.image}}">
+            </div>
+        </div>
+	</div>
+</main>
 {% endblock %}
