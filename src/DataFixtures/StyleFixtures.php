@@ -47,6 +47,7 @@ class StyleFixtures extends Fixture
             'description' => 'Si vous cherchez à mettre à jour votre salle de bain, pourquoi ne pas envisager un look vintage? Ce style est idéal pour ceux qui recherchent une salle de bain avec beaucoup de charme et de caractère.'
         ],
     ];
+    
     public function load(ObjectManager $manager): void
     {
         foreach (self::STYLES as $key => $styleName) {
