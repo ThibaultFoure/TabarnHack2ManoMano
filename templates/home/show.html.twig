@@ -1,17 +1,25 @@
 {% extends "base.html.twig" %}
-
 {% block body %}
-	<main class="container mb-4 mt-5">
+	<main class="container mb-4 mt-5 d-flex justify-content-center flex-column">
 		<h2 class="text-center text-dark fs-4">{{ style.description }}</h2>
-		<div class="col-md-4">
-			<div class="card mb-1 mt-5">
+		<div class="d-flex justify-content-center mt-5">
+			<div class="card mb-1">
 				<img class="card-img img-show" src="{{ vich_uploader_asset(style) }}" alt="{{ style.image}}">
 			</div>
-		</div>
-		<div>
-			{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
-				{{ product.name }}
-			{% endfor %}
+			<div class="productList d-flex align-items-start ms-5">
+				{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
+					<ul class="list-group list-group-flush d-flex flex-column">
+						<li class="list-group-item me-4">
+							<span class="fs-4 d-flex justify-content-between">
+								<span class="text-success">
+									{{ product.price }}
+									€
+								</span>
+							</span>
+						</li>
+					</ul>
+				{% endfor %}
+			</div>
 		</div>
 	</main>
 {% endblock %}
