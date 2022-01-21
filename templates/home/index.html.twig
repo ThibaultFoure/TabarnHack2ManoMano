@@ -1,22 +1,23 @@
 {% extends "base.html.twig" %}
 {% block body %}
-	{% block banner %}
-		{% include "items/_banner.html.twig" %}
-	{% endblock %}
-	{% block navbar %}
-		{% include "items/_secondNavbar.html.twig" %}
-	{% endblock %}
-	<div class="container mt-5">
-		<h2 class="text-center mb-4 mt-4 text-primary">Notre collection de salles de bain</h2>
-		<div class="row ">
-			{% for style in styles %}
-				<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-					<a href="{{ path('show', {'id': style.id}) }}">
-						<img src="{{ vich_uploader_asset(style) }}" class="w-100 shadow-1-strong rounded mb-4 card-sdb" alt="{{ style.name}}"/>
-					</a>
-				</div>
-			{% endfor %}
+{% block banner %}
+{% include "items/_banner.html.twig" %}
+{% endblock %}
+{% block navbar %}
+{% include "items/_secondNavbar.html.twig" %}
+{% endblock %}
+<div class="container mt-5">
+	<h2 class="text-center mb-4 mt-4 text-primary">Notre collection de salles de bain</h2>
+	<div class="row">
+		{% for style in styles %}
+		<div class="col-lg-4 col-md-12 mb-4 mt-2 mb-lg-0">
+			<p class="text-center text-primary fs-4">{{ style.name }}</p>
+			<a href="{{ path('show', {'id': style.id}) }}">
+				<img src="{{ vich_uploader_asset(style) }}" class="w-100 shadow-1-strong rounded mb-4 card-sdb"
+					alt="{{ style.name}}" />
+			</a>
 		</div>
-	</div>	
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}
