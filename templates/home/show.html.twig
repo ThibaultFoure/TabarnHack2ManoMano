@@ -1,19 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<main class="container mb-4 mt-5">
-    <h2 class="text-center text-dark fs-4">{{ style.description }}</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-1 mt-5">
-                <img class="card-img img-show" src="{{ vich_uploader_asset(style) }}" alt="{{ style.image}}">
-            </div>
-        </div>
-    </div>
-    <div>
-    {% for cate in items %}
-        
-    {% endfor %}
-    </div>
-</main>
+	<main class="container mb-4 mt-5">
+		<h2 class="text-center text-dark fs-4">{{ style.description }}</h2>
+		<div class="col-md-4">
+			<div class="card mb-1 mt-5">
+				<img class="card-img img-show" src="{{ vich_uploader_asset(style) }}" alt="{{ style.image}}">
+			</div>
+		</div>
+		<div>
+			{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
+				{{ product.name }}
+			{% endfor %}
+		</div>
+	</main>
 {% endblock %}
