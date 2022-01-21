@@ -23,9 +23,9 @@
 					{% for item in items %}
 						<tr class="fs-5">
 							<td>{{ item.product.name }}</td>
-							<td>{{ item.product.price }}</td>
+							<td>{{ item.product.price }} €</td>
 							<td>{{ item.quantity }}</td>
-							<td>{{ item.product.price * item.quantity }}</td>
+							<td>{{ item.product.price * item.quantity }} €</td>
 							<td>
 								<a href="{{ path('cart_delete', {'id':item.product.id })}}" class="btn btn-danger">
 									<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash-fill" viewbox="0 0 16 16">
@@ -39,7 +39,7 @@
 				<tfoot>
 					<tr>
 						<td colspan='3' class="text-end fw-bold">Total :</td>
-						<td>{{ total }}</td>
+						<td>{{ total }} €</td>
 						<td></td>
 					</tr>
 				</tfoot>
