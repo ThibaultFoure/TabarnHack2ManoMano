@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\CategorieRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
+ * @Vich\Uploadable
  */
 class Categorie
 {
@@ -34,10 +38,27 @@ class Categorie
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @Vich\UploadableField(mapping="category_file", fileNameProperty="image")
+     * @var File
+     */
+    private $styleFile;
+
     public function __construct()
     {
         $this->styles = new ArrayCollection();
         $this->products = new ArrayCollection();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -113,6 +134,54 @@ class Categorie
                 $product->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of styleFile
+     *
+     * @return  File
+     */ 
+    public function getStyleFile()
+    {
+        return $this->styleFile;
+    }
+
+    /**
+     * Set the value of styleFile
+     *
+     * @param  File  $styleFile
+     *
+     * @return  self
+     */ 
+    public function setStyleFile(File $styleFile)
+    {
+        $this->styleFile = $styleFile;
 
         return $this;
     }
