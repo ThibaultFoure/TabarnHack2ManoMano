@@ -10,7 +10,7 @@ class CategoryFixtures extends Fixture
 {
     const CATEGORIES = [
         [
-            'name' => 'Salles de bain',
+            'name' => 'Salle de bain',
             'image' => 'salledebain.jpg',
         
         ],
@@ -22,7 +22,7 @@ class CategoryFixtures extends Fixture
         ],
 
         [
-            'name' => 'chambre',
+            'name' => 'Chambre',
             'image' => 'chambre.jpg',
         
         ],
