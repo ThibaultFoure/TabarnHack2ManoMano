@@ -7,3 +7,7 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/uploads/styles'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
+        category_file:
+            uri_prefix: /uploads/categories
+            upload_destination: '%kernel.project_dir%/public/uploads/categories'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
