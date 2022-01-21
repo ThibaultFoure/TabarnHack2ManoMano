@@ -7,18 +7,60 @@
 				<img class="card-img img-show" src="{{ vich_uploader_asset(style) }}" alt="{{ style.image}}">
 			</div>
 			<div class="productList d-flex align-items-start ms-5">
-				{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
-					<ul class="list-group list-group-flush d-flex flex-column">
-						<li class="list-group-item me-4">
-							<span class="fs-4 d-flex justify-content-between">
-								<span class="text-success">
-									{{ product.price }}
-									€
+				<div class="d-flex flex-column align-items-center">
+					<h3 class="text-center">Access</h3>
+					<ul class="list-group list-unstyled d-flex justify-content-center flex-column">
+						{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
+							<li class="">
+								<span class="fs-4 d-flex flex-column justify-content-between">
+									<a href="{{ path('cart_add', {'id':product.id}) }}" class="btn btn-succes float-right">
+										<img class="{% if cart[product.id] is defined %} itemImage {% else %} itemNotSelected {% endif %}" src="{{ vich_uploader_asset(product) }}" alt="">
+									</a>
+									<span class="text-success text-center">
+										{{ product.price }}
+										€
+									</span>
 								</span>
-							</span>
-						</li>
+							</li>
+						{% endfor %}
 					</ul>
-				{% endfor %}
+				</div>
+				<div class="d-flex verticalSeparator flex-column align-items-center">
+					<h3>Référence</h3>
+					<ul class="list-group list-unstyled d-flex flex-column">
+						{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
+							<li class="">
+								<span class="fs-4 d-flex flex-column justify-content-between">
+									<a href="{{ path('cart_add', {'id':product.id}) }}" class="btn btn-succes float-right">
+										<img class="{% if cart[product.id] is defined %} itemImage {% else %} itemNotSelected {% endif %}" src="{{ vich_uploader_asset(product) }}" alt="">
+									</a>
+									<span class="text-success text-center">
+										{{ product.price }}
+										€
+									</span>
+								</span>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="d-flex flex-column align-items-center">
+					<h3>Sérénité</h3>
+					<ul class="list-group list-unstyled d-flex flex-column">
+						{% for product in style.products|filter(product => product.category.name == 'salle de bain') %}
+							<li class="">
+								<span class="fs-4 d-flex flex-column justify-content-between">
+									<a href="{{ path('cart_add', {'id':product.id}) }}" class="btn btn-succes float-right">
+										<img class="{% if cart[product.id] is defined %} itemImage {% else %} itemNotSelected {% endif %}" src="{{ vich_uploader_asset(product) }}" alt="">
+									</a>
+									<span class="text-success text-center">
+										{{ product.price }}
+										€
+									</span>
+								</span>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</main>
