@@ -34,10 +34,6 @@ class Categorie
         $this->styles = new ArrayCollection();
     }
 
-
-
-
-
     public function getId(): ?int
     {
         return $this->id;
