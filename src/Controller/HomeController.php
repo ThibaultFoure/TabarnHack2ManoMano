@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Style;
+use App\Repository\ProductRepository;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 class HomeController extends AbstractController
 {
@@ -29,13 +32,14 @@ class HomeController extends AbstractController
         );
     }
 
-
     /**
      * @Route("product/show/{id<^[0-9]+$>}", name="show")
      */
-    public function show(Style $style): Response
+    public function show(Style $style, SessionInterface $session, $id): Response
     {
-        return $this->render('home/show.html.twig', ['style' => $style]);
-    }
+        $cart = $session->get('cart');
+        // dd($cart);
 
+        return $this->render('home/show.html.twig', ['style' => $style, 'cart' => $cart]);
+    }
 }

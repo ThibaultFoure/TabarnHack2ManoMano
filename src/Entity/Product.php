@@ -59,6 +59,18 @@ class Product
      */
     private $image;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Style::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $style;
+
     public function __construct()
     {
         $this->detailProducts = new ArrayCollection();
@@ -180,6 +192,30 @@ class Product
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categorie
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categorie $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getStyle(): ?Style
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?Style $style): self
+    {
+        $this->style = $style;
 
         return $this;
     }

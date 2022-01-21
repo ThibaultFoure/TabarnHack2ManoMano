@@ -29,9 +29,15 @@ class Categorie
      */
     private $styles;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
+     */
+    private $products;
+
     public function __construct()
     {
         $this->styles = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,36 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($style->getCategorie() === $this) {
                 $style->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
         }
 

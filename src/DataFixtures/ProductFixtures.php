@@ -13,7 +13,7 @@ class ProductFixtures extends Fixture
             'name' => 'Baignoire',
             'image' => 'objet1Standard.png',
             'price' => 499,
-            'description' => 'baignoire en cuivre',
+            'description' => 'Baignoire en cuivre',
         ],
         [
             'name' => 'Lavabo',
@@ -25,13 +25,13 @@ class ProductFixtures extends Fixture
             'name' => 'Miroir',
             'image' => 'objet3Standard.png',
             'price' => 89,
-            'description' => 'Miroire en bronze',
+            'description' => 'Miroir en bronze',
         ],
         [
-            'name' => 'Porte serviettes',
+            'name' => 'Porte-serviette',
             'image' => 'objet4Standard.png',
             'price' => 115,
-            'description' => 'Porte serviettes en bronze',
+            'description' => 'Porte-serviette en bronze',
         ],  
         [
             'name' => 'Lavabo',
@@ -49,7 +49,7 @@ class ProductFixtures extends Fixture
             'name' => 'Bougies',
             'image' => 'objet3.png',
             'price' => 36,
-            'description' => 'bougies parfumées',
+            'description' => 'Bougies parfumées',
         ],
         [
             'name' => 'Robinet',

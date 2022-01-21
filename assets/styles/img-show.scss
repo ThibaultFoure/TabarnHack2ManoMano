@@ -1,5 +1,33 @@
-
 .img-show {
     height: 700px;
 
+}
+
+.itemImage {
+    height       : 100px;
+    border-radius: 8px;
+
+    &:hover {
+        box-shadow: 0px 0px 30px -15px $dark;
+        overflow  : hidden;
+        transform : scale(1.03);
+    }
+}
+
+.itemNotSelected {
+    height       : 100px;
+    border-radius: 8px;
+    filter       : grayscale(100%);
+
+    &:hover {
+        box-shadow: 0px 0px 30px -15px $dark;
+        overflow  : hidden;
+        transform : scale(1.03);
+    }
+}
+
+.verticalSeparator {
+    padding-inline: 10px;
+    border-left   : 1px solid rgb(156, 156, 156);
+    border-right  : 1px solid rgb(156, 156, 156);
 }
