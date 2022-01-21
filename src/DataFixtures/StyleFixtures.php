@@ -5,8 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Style;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class StyleFixtures extends Fixture
+class StyleFixtures extends Fixture implements DependentFixtureInterface
 {
 
     const STYLES = [
@@ -47,19 +48,34 @@ class StyleFixtures extends Fixture
             'description' => 'Si vous cherchez à mettre à jour votre salle de bain, pourquoi ne pas envisager un look bohème ? Ce style est idéal pour ceux qui recherchent une salle de bain avec beaucoup de charme et appelant à l\'évasion.'
         ],
     ];
-    
+
     public function load(ObjectManager $manager): void
     {
-        foreach (self::STYLES as $key => $styleName) {
+        for ($i = 0; $i < 3; $i++) {
             $style = new Style();
-            $style->setName($styleName['name']);
-            $style->setImage($styleName['image']);
-            $style->setDescription($styleName['description']);
+            $style->setName(self::STYLES[$i]['name']);
+            $style->setImage(self::STYLES[$i]['image']);
+            $style->setDescription(self::STYLES[$i]['description']);
             copy(
-                __DIR__ . '/' . $styleName['image'],
-                __DIR__ . '/../../public/uploads/styles/' . $styleName['image']
+                __DIR__ . '/' . self::STYLES[$i]['image'],
+                __DIR__ . '/../../public/uploads/styles/' . self::STYLES[$i]['image']
             );
-            $style->SetCategorie($this->getReference('categorie_0'));
+            $this->addReference('style_' . $i, $style);
+            $style->setCategorie($this->getReference('categorie_0'));
+            $manager->persist($style);
+        }
+
+        for ($i = 3; $i < 6; $i++) {
+            $style = new Style();
+            $style->setName(self::STYLES[$i]['name']);
+            $style->setImage(self::STYLES[$i]['image']);
+            $style->setDescription(self::STYLES[$i]['description']);
+            copy(
+                __DIR__ . '/' . self::STYLES[$i]['image'],
+                __DIR__ . '/../../public/uploads/styles/' . self::STYLES[$i]['image']
+            );
+            $this->addReference('style_'. $i, $style);
+            $style->setCategorie($this->getReference('categorie_0'));
             $manager->persist($style);
         }
 
