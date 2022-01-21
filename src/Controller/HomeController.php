@@ -29,7 +29,6 @@ class HomeController extends AbstractController
         );
     }
 
-
     /**
      * @Route("product/show/{id<^[0-9]+$>}", name="show")
      */
