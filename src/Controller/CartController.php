@@ -17,19 +17,21 @@ class CartController extends AbstractController
     {
         $cart = $session->get('cart');
         $total = 0;
-        foreach ($cart as $id => $quantity) {
-            $item = $productRepository->find($id);
-            $totalItem = $item->getPrice() * $quantity;
-            $total += $totalItem;
+        if (!empty($cart)) {
+            foreach ($cart as $id => $quantity) {
+                $item = $productRepository->find($id);
+                $totalItem = $item->getPrice() * $quantity;
+                $total += $totalItem;
 
-            $cartWhithData[] = [
-                'product' => $item,
-                'quantity' => $quantity
-            ];
+                $cartWhithData[] = [
+                    'product' => $item,
+                    'quantity' => $quantity
+                ];
+            }
         }
 
         return $this->render('cart/index.html.twig', [
-            'items' => $cartWhithData ??[],
+            'items' => $cartWhithData ?? [],
             'total' => $total
         ]);
     }
