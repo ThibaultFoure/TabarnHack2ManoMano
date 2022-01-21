@@ -11,40 +11,40 @@ class StyleFixtures extends Fixture
 
     const STYLES = [
         [
-            'name' => 'Moderne',
+            'name' => 'Épuré',
             'image' => 'salledebain3.jpg',
             'categorie' => 'categorie_0',
-            'description' => 'Envie de design dans votre salle de bain ? Le style moderne conviendra à vos attentes. Il apportera à votre pièce une touche de sérénité et de détente.'
+            'description' => 'Envie de design dans votre salle de bain ? Le style épuré conviendra à vos attentes. Il apportera à votre pièce une touche de sérénité et de détente sans aucun superflu.'
         ],
         [
-            'name' => 'Palais royal',
+            'name' => 'Luxe',
             'image' => 'salledebain1.jpg',
             'categorie' => 'categorie_0',
             'description' => "L’or brossé est véritablement la matière tendance pour décorer votre salle de bain. La robinetterie dorée, il fallait y penser ! Pourtant, là réside tout le charme d’une salle de bain décorée avec style."
         ],
         [
-            'name' => 'rustique',
+            'name' => 'Moderne',
             'image' => 'salledebain2.jpg',
             'categorie' => 'categorie_0',
-            'description' => 'Le charme du rustique dans la salle de bain apporte une touche chaleureuse et confortable, sans oublier de donner un caractère unique à cet espace, notamment avec le mélange des textures et des matériaux comme le bois, la pierre, le métal.'
+            'description' => "Améliorez le standing de votre salle de bains tout en délicatesse en choisissant le style moderne : un usage subtil de matières et textures contemporaines qui donnent à la pièce un cachet intemporel."
         ],
         [
-            'name' => 'Bois',
+            'name' => 'Zen',
             'image' => 'salledebain4.jpg',
             'categorie' => 'categorie_0',
-            'description' => 'Réaménagez et redynamisez votre salle de bain pour une évasion estivale à la campagne. La simplicité et le charme du style champêtre transformera votre salle de bain en havre de repos et de rafraîchissement.'
+            'description' => 'Réaménagez votre salle de bain pour créer un espace de détente parfaite aussi bien pour votre esprit que votre corps. La simplicité et le charme du style zen transformeront votre salle de bain en havre de repos et de rafraîchissement.'
         ],
         [
-            'name' => 'Classique',
+            'name' => 'Cocoon',
             'image' => 'salledebain6.jpg',
             'categorie' => 'categorie_0',
-            'description' => "Améliorez le standing de votre salle de bains tout en délicatesse en choisissant le style classique chic : un subtil mélange entre l’ancien et le contemporain qui donne à la pièce un cachet intemporel."
+            'description' => 'Le confort d\'une salle de bain cocoon apporte une touche chaleureuse et confortable, sans oublier de donner un caractère unique à cet espace, notamment avec le mélange des textures et des matériaux comme le bois, la pierre et le métal.'
         ],
         [
-            'name' => 'Vintage',
+            'name' => 'Bohème',
             'image' => 'salledebain5.jpg',
             'categorie' => 'categorie_0',
-            'description' => 'Si vous cherchez à mettre à jour votre salle de bain, pourquoi ne pas envisager un look vintage? Ce style est idéal pour ceux qui recherchent une salle de bain avec beaucoup de charme et de caractère.'
+            'description' => 'Si vous cherchez à mettre à jour votre salle de bain, pourquoi ne pas envisager un look bohème ? Ce style est idéal pour ceux qui recherchent une salle de bain avec beaucoup de charme et appelant à l\'évasion.'
         ],
     ];
     
