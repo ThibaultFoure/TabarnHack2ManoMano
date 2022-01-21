@@ -1,5 +1,8 @@
 {% extends "base.html.twig" %}
 {% block body %}
+	{% block navbar %}
+		{% include "items/_secondNavbar.html.twig" %}
+	{% endblock %}
 	<main class="container mb-4 mt-5 d-flex justify-content-center flex-column">
 		<h2 class="text-center text-dark fs-4">{{ style.description }}</h2>
 		<div class="d-flex justify-content-center mt-5">
