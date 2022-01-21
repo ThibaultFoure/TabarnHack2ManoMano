@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
             'name' => 'Scie circulaire',
             'image' => 'scie.jpg',
             'price' => 200,
-            'description' => 'une scie circulaire',
+            'description' => 'Une scie circulaire',
         ],
     ];
     public function load(ObjectManager $manager): void
